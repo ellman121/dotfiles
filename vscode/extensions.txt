@@ -1,0 +1,16 @@
+alefragnani.project-manager
+annsk.alignment
+christian-kohler.npm-intellisense
+christian-kohler.path-intellisense
+eg2.tslint
+eg2.vscode-npm-script
+mattn.Lisp
+ms-python.python
+ms-vscode.cpptools
+ms-vscode.Go
+ms-vscode.node-debug2
+PKief.material-icon-theme
+ritwickdey.LiveServer
+slevesque.vscode-hexdump
+vsmobile.vscode-react-native
+wart.ariake-dark

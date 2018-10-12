@@ -1,0 +1,110 @@
+{
+    // Application behaviour
+    "explorer.confirmDelete": false,
+    "explorer.openEditors.visible": 0,
+    "telemetry.enableTelemetry": false,
+    "window.openFoldersInNewWindow": "off",
+    "workbench.commandPalette.history": 0,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.tips.enabled": false,
+    "debug.toolBarLocation": "docked",
+    "material-icon-theme.showReloadMessage": false,
+    
+    // Editor behaviour
+    "debug.inlineValues": true,
+    "editor.formatOnPaste": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.renderWhitespace": "none",
+    "editor.suggestSelection": "first",
+    "explorer.confirmDragAndDrop": false,
+    "files.insertFinalNewline": true,
+    "breadcrumbs.enabled": true,
+    "emmet.showAbbreviationSuggestions": false,
+    "editor.suggest.localityBonus": true,
+    
+    // Git behaviour
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": false,
+    
+    // Theme settings
+    "window.title": "${appName}${separator}${dirty}${rootName}",
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Ariake Dark",
+    "workbench.editor.labelFormat": "medium",
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.folders.theme": "specific",
+    
+    // Font fixes
+    "editor.fontFamily": "monoid",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    
+    // Customize Terminal
+    "terminal.integrated.shell.osx": "/usr/local/bin/bash",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.cursorStyle": "line",
+    
+    // Make search great again
+    "search.exclude": {
+        "**/android/app/build": true, // RN Android build folder
+        "**/bower_components": true, // Bower
+        "**/ios/build": true, // RN iOS build folder
+        "**/ios/Pods": true, // iOS Pods code
+        "**/lib": true, // Compiled javascript
+        "**/node_modules": true // NPM
+    },
+    
+    // Add some things to alignment
+    "alignment.chars": {
+        ":": {
+            "spaceBefore": 1,
+            "spaceAfter": 1
+        },
+        "from": {
+            "spaceBefore": 1,
+            "spaceAfter": 1
+        }
+    },
+    
+    // Extension specific Settings
+    "material-icon-theme.showUpdateMessage": false,
+    
+    /* Language specific fixes */
+    // Golang
+    "go.inferGopath": true,
+    "code-runner.executorMap": {
+        "go": "go run $dir*.go"
+    },
+    
+    // C/C++
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4 }",
+    "C_Cpp.intelliSenseEngine": "Default",
+    
+    // Python
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "python.pythonPath": "python3",
+    "[python]": {
+        // Black does not support partial formatting
+        "editor.formatOnPaste": false
+    },
+    
+    // Javascript / JSON
+    "[jsonc]": {
+        // It annoys me when I paste a json file and it
+        // removes whitespace between lines
+        "editor.formatOnPaste": false
+    },
+    "[json]": {
+        // It annoys me when I paste a json file and it
+        // removes whitespace between lines
+        "editor.formatOnPaste": false
+    },
+    "emmet.excludeLanguages": [
+        "markdown",
+        "javascript",
+        "typescript",
+        "typescriptreact",
+    ],
+}
