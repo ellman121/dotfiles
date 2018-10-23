@@ -17,7 +17,7 @@
       "backgroundSelected" : "#393B42FF",
       "text" : {
         "size" : 18,
-        "colorSelected" : "#36C4BDE4",
+        "colorSelected" : "#36C4BDCC",
         "font" : "System",
         "color" : "#0F93C6CC"
       },
@@ -33,7 +33,7 @@
         "size" : 34,
         "colorSelected" : "#000000FF",
         "font" : "System Light",
-        "color" : "#6262EAFF"
+        "color" : "#36C4BDE5"
       },
       "backgroundSelected" : "#B3D7FFFF"
     },
@@ -53,7 +53,7 @@
       "thickness" : 0
     },
     "scrollbar" : {
-      "color" : "#561A72FF",
+      "color" : "#6262EAFF",
       "thickness" : 2
     },
     "name" : "Ariake Dark"
