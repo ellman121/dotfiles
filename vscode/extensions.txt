@@ -11,6 +11,7 @@ ms-vscode.Go
 ms-vscode.node-debug2
 PKief.material-icon-theme
 ritwickdey.LiveServer
+Rubymaniac.vscode-direnv
 slevesque.vscode-hexdump
 vsmobile.vscode-react-native
 wart.ariake-dark
