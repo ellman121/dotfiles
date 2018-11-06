@@ -107,4 +107,7 @@
         "typescript",
         "typescriptreact",
     ],
+    "files.associations": {
+        "Fastfile": "ruby"
+    },
 }

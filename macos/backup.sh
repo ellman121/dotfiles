@@ -10,7 +10,7 @@ cp ~/.config/htop/htoprc ./dot_config__htop__htoprc
 cp ~/.emacs ./dot_emacs
 
 # Some things I keep in ~bin
-cp -r ~/bin ./
+cp -a -v ~/bin ./
 
 # Backup homebrew things
 # NOTE: `brew bundle dump` doesn't look at global cask arguments, so I'm

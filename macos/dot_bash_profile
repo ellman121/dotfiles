@@ -6,10 +6,11 @@
 ###############
 
 # Get paths to make coreutils work properly
-RUPA="$(brew --prefix ruby)/bin"                      # Get Ruby Path
-PYPA="$(brew --prefix python)/bin"                    # Get Python Path
-CORE="$(brew --prefix coreutils)/libexec/gnubin"      # Get Coreutils Path
-BREW="$(brew --prefix)/bin:$(brew --prefix)/sbin"     # Brew Binaries
+RUPA="$(brew --prefix ruby)/bin"                  # Get Ruby Path
+PYPA="$(brew --prefix python)/bin"                # Get Python Path
+CURL="$(brew --prefix curl)/bin"                  # Get Coreutils Path
+CORE="$(brew --prefix coreutils)/libexec/gnubin"  # Get Coreutils Path
+BREW="$(brew --prefix)/bin:$(brew --prefix)/sbin" # Brew Binaries
 
 # Andorid stuff
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
@@ -31,7 +32,7 @@ export GOPATH=$HOME/go
 # (09) General bin    /usr/bin
 # (10) General sbin   /usr/sbin
 # (11) User bin      ~/bin
-export PATH=$CORE:$BREW:$RUPA:$PYPA:$GOPATH/bin:$ANDR:/bin:/sbin:/usr/bin:/usr/sbin:~/bin
+export PATH=$CORE:$BREW:$RUPA:$PYPA:$GOPATH/bin:$CURL:$ANDR:/bin:/sbin:/usr/bin:/usr/sbin:~/bin
 
 # Editor
 export EDITOR="emacs"
