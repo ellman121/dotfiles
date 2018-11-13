@@ -1,26 +1,28 @@
 {
     // Application behaviour
+    "debug.toolBarLocation": "docked",
     "explorer.confirmDelete": false,
     "explorer.openEditors.visible": 0,
+    "material-icon-theme.showReloadMessage": false,
+    "search.showLineNumbers": true,
     "telemetry.enableTelemetry": false,
     "window.openFoldersInNewWindow": "off",
     "workbench.commandPalette.history": 0,
+    "workbench.editor.highlightModifiedTabs": true,
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tips.enabled": false,
-    "debug.toolBarLocation": "docked",
-    "material-icon-theme.showReloadMessage": false,
     
     // Editor behaviour
+    "breadcrumbs.enabled": true,
     "debug.inlineValues": true,
     "editor.formatOnPaste": true,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.renderWhitespace": "none",
+    "editor.suggest.localityBonus": true,
     "editor.suggestSelection": "first",
+    "emmet.showAbbreviationSuggestions": false,
     "explorer.confirmDragAndDrop": false,
     "files.insertFinalNewline": true,
-    "breadcrumbs.enabled": true,
-    "emmet.showAbbreviationSuggestions": false,
-    "editor.suggest.localityBonus": true,
     
     // Git behaviour
     "git.autofetch": true,
@@ -28,12 +30,12 @@
     "git.enableSmartCommit": false,
     
     // Theme settings
+    "material-icon-theme.folders.theme": "specific",
     "window.title": "${appName}${separator}${dirty}${rootName}",
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Ariake Dark",
     "workbench.editor.labelFormat": "medium",
     "workbench.iconTheme": "material-icon-theme",
-    "material-icon-theme.folders.theme": "specific",
     
     // Font fixes
     "editor.fontFamily": "monoid",
@@ -41,9 +43,10 @@
     "editor.fontSize": 12,
     
     // Customize Terminal
-    "terminal.integrated.shell.osx": "/usr/local/bin/bash",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.experimentalBufferImpl": "TypedArray",
+    "terminal.integrated.shell.osx": "/usr/local/bin/bash",
     
     // Make search great again
     "search.exclude": {
@@ -71,11 +74,12 @@
     "material-icon-theme.showUpdateMessage": false,
     
     /* Language specific fixes */
+    "files.associations": {
+        "Fastfile": "ruby"
+    },
+
     // Golang
     "go.inferGopath": true,
-    "code-runner.executorMap": {
-        "go": "go run $dir*.go"
-    },
     
     // C/C++
     "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4 }",
@@ -107,7 +111,4 @@
         "typescript",
         "typescriptreact",
     ],
-    "files.associations": {
-        "Fastfile": "ruby"
-    },
 }

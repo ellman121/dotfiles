@@ -6,10 +6,10 @@
 ###############
 
 # Get paths to make coreutils work properly
-RUPA="$(brew --prefix ruby)/bin"                  # Get Ruby Path
-PYPA="$(brew --prefix python)/bin"                # Get Python Path
-CURL="$(brew --prefix curl)/bin"                  # Get Coreutils Path
-CORE="$(brew --prefix coreutils)/libexec/gnubin"  # Get Coreutils Path
+RUPA="$(brew --prefix ruby)/bin"                  # Ruby Executables path
+PYPA="$(brew --prefix python)/libexec/bin"        # Python Executables path -- NOTE: THESE ARE VERSIOINED (i.e. `python` => python3)
+CURL="$(brew --prefix curl)/bin"                  # Coreutils Executables path
+CORE="$(brew --prefix coreutils)/libexec/gnubin"  # Coreutils Executables path
 BREW="$(brew --prefix)/bin:$(brew --prefix)/sbin" # Brew Binaries
 
 # Andorid stuff

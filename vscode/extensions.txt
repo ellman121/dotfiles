@@ -5,6 +5,7 @@ christian-kohler.path-intellisense
 eg2.tslint
 eg2.vscode-npm-script
 mattn.Lisp
+mikestead.dotenv
 ms-python.python
 ms-vscode.cpptools
 ms-vscode.Go
