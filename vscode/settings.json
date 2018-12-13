@@ -9,6 +9,7 @@
     "window.openFoldersInNewWindow": "off",
     "workbench.commandPalette.history": 0,
     "workbench.editor.highlightModifiedTabs": true,
+    "workbench.settings.editor": "json",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tips.enabled": false,
     
@@ -20,9 +21,15 @@
     "editor.renderWhitespace": "none",
     "editor.suggest.localityBonus": true,
     "editor.suggestSelection": "first",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.smoothScrolling": true,
     "emmet.showAbbreviationSuggestions": false,
     "explorer.confirmDragAndDrop": false,
     "files.insertFinalNewline": true,
+
+    // Debugging mode fixes
+    "debug.enableAllHovers": true,
+    "debug.showInStatusBar": "always",
     
     // Git behaviour
     "git.autofetch": true,
@@ -47,6 +54,7 @@
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.experimentalBufferImpl": "TypedArray",
     "terminal.integrated.shell.osx": "/usr/local/bin/bash",
+    "terminal.integrated.splitCwd": "workspaceRoot",
     
     // Make search great again
     "search.exclude": {
