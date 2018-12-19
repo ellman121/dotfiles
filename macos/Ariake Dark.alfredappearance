@@ -3,7 +3,7 @@
     "result" : {
       "textSpacing" : 5,
       "subtext" : {
-        "size" : 12,
+        "size" : 10,
         "colorSelected" : "#36C4BDB2",
         "font" : "System",
         "color" : "#0F93C6B1"
@@ -16,17 +16,17 @@
       },
       "backgroundSelected" : "#393B42FF",
       "text" : {
-        "size" : 18,
+        "size" : 17,
         "colorSelected" : "#36C4BDCC",
         "font" : "System",
         "color" : "#0F93C6CC"
       },
       "iconPaddingHorizontal" : 4,
-      "paddingVertical" : 3,
+      "paddingVertical" : 2,
       "iconSize" : 40
     },
     "search" : {
-      "paddingVertical" : 4,
+      "paddingVertical" : 0,
       "background" : "#393B42CB",
       "spacing" : 9,
       "text" : {
@@ -39,7 +39,7 @@
     },
     "window" : {
       "color" : "#2A2B30FF",
-      "paddingHorizontal" : 9,
+      "paddingHorizontal" : 8,
       "width" : 559,
       "borderPadding" : 0,
       "borderColor" : "#FFF2A1D4",
@@ -54,7 +54,7 @@
     },
     "scrollbar" : {
       "color" : "#6262EAFF",
-      "thickness" : 2
+      "thickness" : 3
     },
     "name" : "Ariake Dark"
   }
