@@ -11,7 +11,7 @@ brew "bash"
 brew "ghc"
 brew "cabal-install"
 brew "cmake"
-brew "cocoapods"
+brew "cocoapods", link: false
 brew "coreutils"
 brew "cowsay"
 brew "curl"

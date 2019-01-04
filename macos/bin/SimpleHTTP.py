@@ -1,39 +1,35 @@
 #!/bin/env python
-'''Super simple script to start a multithreaded HTTP server in the current directory'''
+import sys, os, socket
+from socketserver import ThreadingMixIn
+from http.server import SimpleHTTPRequestHandler, HTTPServer
 
-import socket
-import SocketServer
-import BaseHTTPServer
-import SimpleHTTPServer
-import sys
+HOST = socket.gethostbyname(socket.gethostname())
 
-class SimpleMultithreadedServer(SocketServer.ThreadingMixIn, BaseHTTPServer.HTTPServer):
-    '''Placeholder class to mix together
-    SocketServer.ThreadingMixIn and BaseHTTPServer.HTTPServer'''
+class ThreadingSimpleServer(ThreadingMixIn, HTTPServer):
     pass
 
+'''
+This sets the listening port, default port 8000
+'''
+if sys.argv[1:]:
+    PORT = int(sys.argv[1])
+else:
+    PORT = 8000
 
-def main():
-    '''Start a multithreaded server'''
+'''
+This sets the working directory of the HTTPServer, defaults to directory where script is executed.
+'''
+if sys.argv[2:]:
+    os.chdir(sys.argv[2])
+    CWD = sys.argv[2]
+else:
+    CWD = os.getcwd()
 
-    if sys.argv[1:]:
-        port = int(sys.argv[1])
-    else:
-        port = 8000
-
-    server = SimpleMultithreadedServer(('', port), SimpleHTTPServer.SimpleHTTPRequestHandler)
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.connect(("8.8.8.8", 80))
-    local_ip = str(sock.getsockname()[0])
-
-    try:
-        print "  IP: %s\nPort: %s" % (local_ip, port)
-        while 1:
-            sys.stdout.flush()
-            server.handle_request()
-    except KeyboardInterrupt:
-        print "\nFinished"
-
-
-if __name__ == '__main__':
-    main()
+server = ThreadingSimpleServer(('0.0.0.0', PORT), SimpleHTTPRequestHandler)
+print("Serving HTTP traffic on", HOST, "using port", PORT)
+try:
+    while 1:
+        sys.stdout.flush()
+        server.handle_request()
+except KeyboardInterrupt:
+    print("\nShutting down server.")
