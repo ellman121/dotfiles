@@ -6,11 +6,12 @@
 ###############
 
 # Get paths to make coreutils work properly
-PYPA="$(brew --prefix python)/libexec/bin"        # Python Executables path -- NOTE: THESE ARE VERSIOINED (i.e. `python` => python3)
-CURL="$(brew --prefix curl)/bin"                  # Curl Executables path
-OSSL="$(brew --prefix openssl)/bin"               # Openssl Executables path
-CORE="$(brew --prefix coreutils)/libexec/gnubin"  # Coreutils Executables path
-BREW="$(brew --prefix)/bin:$(brew --prefix)/sbin" # Brew Binaries
+TEX="/Library/TeX/texbin/"                       # LaTeX stuff
+PYP="$(brew --prefix python)/libexec/bin"        # Python Executables path -- NOTE: THESE ARE VERSIOINED (i.e. `python` => python3)
+CRL="$(brew --prefix curl)/bin"                  # Curl Executables path
+SSL="$(brew --prefix openssl)/bin"               # Openssl Executables path
+CRE="$(brew --prefix coreutils)/libexec/gnubin"  # Coreutils Executables path
+BRW="$(brew --prefix)/bin:$(brew --prefix)/sbin" # Brew Binaries
 
 # Andorid stuff
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
@@ -35,7 +36,7 @@ export GOBIN=$HOME/go/bin
 # (10) General bin    /usr/bin
 # (11) General sbin   /usr/sbin
 # (12) User bin      ~/bin
-export PATH=$CORE:$BREW:$PYPA:$GOBIN:$CURL:$OSSL:$ANDROID_PLATFORM_TOOLS:/bin:/sbin:/usr/bin:/usr/sbin:~/bin
+export PATH=$TEX:$CRE:$BRW:$PYP:$GOBIN:$CRL:$SSL:$ANDROID_PLATFORM_TOOLS:/bin:/sbin:/usr/bin:/usr/sbin:~/bin
 
 # Editor
 export EDITOR="emacs"
