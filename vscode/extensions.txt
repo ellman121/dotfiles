@@ -4,6 +4,8 @@ christian-kohler.npm-intellisense
 christian-kohler.path-intellisense
 eg2.tslint
 eg2.vscode-npm-script
+James-Yu.latex-workshop
+jingkaizhao.vscode-redux-devtools
 mattn.Lisp
 mikestead.dotenv
 ms-python.python

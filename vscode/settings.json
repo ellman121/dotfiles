@@ -119,4 +119,6 @@
         "typescript",
         "typescriptreact",
     ],
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "latex-workshop.view.pdf.viewer": "tab",
 }
