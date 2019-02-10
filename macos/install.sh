@@ -12,7 +12,7 @@ brew bundle install
 # Move dotfiles into place
 cp ./dot_bash_profile ~/.bash_profile
 cp ./dot_bash_aliases ~/.bash_aliases
-cp ./dot_config__htop__htoprc ~/.config/htp/htoprc
+mkdir -p ~/.config/htop && cp ./dot_config__htop__htoprc ~/.config/htop/htoprc
 cp ./dot_emacs ~/.emacs
 
 # Move bin into place
