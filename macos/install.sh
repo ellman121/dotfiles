@@ -18,7 +18,7 @@ pyenv global $(cat ruby_version)
 # Move dotfiles into place
 cp -v ./dot_bash_profile ~/.bash_profile
 cp -v ./dot_bash_aliases ~/.bash_aliases
-cp -v ./dot_config__htop__htoprc ~/.config/htp/htoprc
+mkdir -p ~/.config/htop && cp -v ./dot_config__htop__htoprc ~/.config/htop/htoprc
 cp -v ./dot_emacs ~/.emacs
 
 # Move bin into place
