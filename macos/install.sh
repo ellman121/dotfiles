@@ -9,20 +9,26 @@
 # Install brews
 brew bundle install
 
+# Setup rbenv and pyenv
+rbenv install $(cat ruby_version)
+rbenv global $(cat ruby_version)
+pyenv install $(cat python_version)
+pyenv global $(cat ruby_version)
+
 # Move dotfiles into place
-cp ./dot_bash_profile ~/.bash_profile
-cp ./dot_bash_aliases ~/.bash_aliases
-cp ./dot_config__htop__htoprc ~/.config/htp/htoprc
-cp ./dot_emacs ~/.emacs
+cp -v ./dot_bash_profile ~/.bash_profile
+cp -v ./dot_bash_aliases ~/.bash_aliases
+cp -v ./dot_config__htop__htoprc ~/.config/htp/htoprc
+cp -v ./dot_emacs ~/.emacs
 
 # Move bin into place
-cp -r ./bin ~/bin
+cp -r -v ./bin ~/bin
 
 # Spectacle settings
-cp ./SpectacleShortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
+cp -r ./SpectacleShortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
 
 # Run OSX-For-Hackers
 ./osx-for-hackers-ellman121.sh
 
-# Backup VSCode
+# Insatll VSCode things
 cd ../vscode && for e in `cat extensions.txt`; do code --install-extension $e; done; && cp *.json ~/Library/Application\ Support/Code/User

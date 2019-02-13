@@ -2,6 +2,7 @@ alefragnani.project-manager
 annsk.alignment
 christian-kohler.npm-intellisense
 christian-kohler.path-intellisense
+DotJoshJohnson.xml
 eg2.tslint
 eg2.vscode-npm-script
 James-Yu.latex-workshop
@@ -13,7 +14,6 @@ ms-vscode.cpptools
 ms-vscode.Go
 ms-vscode.node-debug2
 PKief.material-icon-theme
-ritwickdey.LiveServer
 Rubymaniac.vscode-direnv
 slevesque.vscode-hexdump
 vsmobile.vscode-react-native

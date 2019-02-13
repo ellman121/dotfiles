@@ -7,7 +7,6 @@
 
 # Get paths to make coreutils work properly
 TEX="/Library/TeX/texbin/"                       # LaTeX stuff
-PYP="$(brew --prefix python)/libexec/bin"        # Python Executables path -- NOTE: THESE ARE VERSIOINED (i.e. `python` => python3)
 CRL="$(brew --prefix curl)/bin"                  # Curl Executables path
 SSL="$(brew --prefix openssl)/bin"               # Openssl Executables path
 CRE="$(brew --prefix coreutils)/libexec/gnubin"  # Coreutils Executables path
@@ -24,19 +23,22 @@ export GOBIN=$HOME/go/bin
 
 # Export $PATH.
 # In oder they are
-# (01) Coreutils from homebrew
-# (02) Homebrew commands
-# (03) Ruby from homebrew
-# (04) Python from homebrew
-# (05) Golang binaries
-# (06) Curl Binary from homebrew
-# (07) OpenSSL Binary from homebrew
-# (08) System bin     /bin
-# (09) System sbin    /sbin
-# (10) General bin    /usr/bin
-# (11) General sbin   /usr/sbin
-# (12) User bin      ~/bin
-export PATH=$TEX:$CRE:$BRW:$PYP:$GOBIN:$CRL:$SSL:$ANDROID_PLATFORM_TOOLS:/bin:/sbin:/usr/bin:/usr/sbin:~/bin
+#   - LaTeX commands
+#   - Coreutils from homebrew
+#   - Binaries installedy by homebrew
+#   - Curl Binary from homebrew (since it's cask only)
+#   - OpenSSL Binary from homebrew (since it's cask only)
+#   - Golang binaries
+#   - Android things
+#   - System bin     /bin
+#   - System sbin    /sbin
+#   - General bin    /usr/bin
+#   - General sbin   /usr/sbin
+#   - User bin      ~/bin
+#
+# NOTE: The actual final path that gets used in the shell will have python / ruby
+# shims inserted at the front by pyenv / rbenv
+export PATH=$TEX:$CRE:$BRW:$CRL:$SSL:$GOBIN:$ANDROID_PLATFORM_TOOLS:/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin
 
 # Editor
 export EDITOR="emacs"
@@ -65,15 +67,6 @@ PROMPT_COMMAND="change_ps1"
 ### Behaviour ###
 #################
 
-# rbenv
-eval "$(rbenv init -)"
-
-# Setup direnv
-eval "$(direnv hook bash)"
-
-# Set up thefuck
-eval "$(thefuck --alias)"
-
 # History control
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=5000
@@ -96,16 +89,33 @@ if [ -f ~/.bash_aliases ]; then
 	source ~/.bash_aliases
 fi
 
-# Google Cloud SDK shit
-# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc'
-# source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc'
+###############################
+### Setup things like rbenv ###
+###############################
 
-## OS Specific Stuff
+# rbenv
+eval "$(rbenv init -)"
+
+# pyenv
+eval "$(pyenv init -)"
+
+# Setup direnv
+eval "$(direnv hook bash)"
+
+# Set up thefuck
+eval "$(thefuck --alias)"
+
+##########################
+### OS Specific Setups ###
+##########################
 
 # OSX
 if [ $(uname) == Darwin ]; then
     # Set Homebrew Cask environment variables
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+    # Make Homebrew play nicely with pyenv
+    alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
 
     # Add extra bash completions from homebrew
     for x in /usr/local/etc/bash_completion.d/*; do
