@@ -19,3 +19,4 @@ Rubymaniac.vscode-direnv
 slevesque.vscode-hexdump
 vsmobile.vscode-react-native
 wart.ariake-dark
+yzhang.markdown-all-in-one
