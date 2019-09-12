@@ -41,6 +41,9 @@ if [ $(uname) == Darwin ]; then
             source $x
         done
     fi
+
+    alias finder="open"
+    alias o.="open ."
 fi
 
 # Linux specific environment stuff
@@ -48,11 +51,13 @@ if [ $(uname) == Linux ]; then
     export PATH=$BASE_PATH:$HOME/.local/bin
 
     # If we're on WSL, add a few windows binaries to the path
-    if [ /bin/grep -q Microsoft /proc/version ]; then
+    if [ -d "/mnt/c/Windows" ]; then
         # I symlink things I like to `~/.msbin` and just add that to the path to minimise clutter
         ln -f -s "/mnt/c/Program Files/Microsoft VS Code/bin/code" ~/.msbin
-        ln -f -s "/mnt/c/Windows/explorer.exe" ~/.msbin
-        export PATH=$PATH:~/.msbin/
+        export PATH=$PATH:~/.msbin
+
+        alias explorer="/mnt/c/Windows/explorer.exe"
+        alias o.="/mnt/c/Windows/explorer.exe ."
     fi
 
     # Add linuxbrew bins to path
@@ -60,7 +65,7 @@ if [ $(uname) == Linux ]; then
 
     # Completion for linuxbrew
     if [ -d "/home/linuxbrew/.linuxbrew/etc/bash_completion.d/" ]; then
-        for x in /usr/local/etc/bash_completion.d/*; do
+        for x in /home/linuxbrew/.linuxbrew/etc/bash_completion.d/*; do
             source $x
         done
     fi
