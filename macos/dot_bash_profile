@@ -1,44 +1,70 @@
 # Elliott's .bash_profile
 [ -z "$PS1" ] && return
 
-###############
-### Exports ###
-###############
+# Stop linuxbrew from complaining about umask
+umask 002
 
-# Get paths to make coreutils work properly
-TEX="/Library/TeX/texbin/"                       # LaTeX stuff
-CRL="$(brew --prefix curl)/bin"                  # Curl Executables path
-SSL="$(brew --prefix openssl)/bin"               # Openssl Executables path
-CRE="$(brew --prefix coreutils)/libexec/gnubin"  # Coreutils Executables path
-BRW="$(brew --prefix)/bin:$(brew --prefix)/sbin" # Brew Binaries
+##############################
+### Environment Management ###
+##############################
 
-# Andorid stuff
-export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
-export ANDROID_HOME="/usr/local/share/android-sdk"
-ANDROID_PLATFORM_TOOLS="/usr/local/share/android-sdk/platform-tools"
-
-# GOLANG stuff
+# Goland Environment
 export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
 
-# Export $PATH.
-# In oder they are
-#   - LaTeX commands
-#   - Coreutils from homebrew
-#   - Binaries installedy by homebrew
-#   - Curl Binary from homebrew (since it's cask only)
-#   - OpenSSL Binary from homebrew (since it's cask only)
-#   - Golang binaries
-#   - Android things
+# Build $PATH.
+# This is a bit piecemeal since brew acts very differently on OSX and Linux
+# Below is the base path things in the order I like
 #   - System bin     /bin
 #   - System sbin    /sbin
 #   - General bin    /usr/bin
 #   - General sbin   /usr/sbin
 #   - User bin      ~/bin
-#
-# NOTE: The actual final path that gets used in the shell will have python / ruby
-# shims inserted at the front by pyenv / rbenv
-export PATH=$TEX:$CRE:$BRW:$CRL:$SSL:$GOBIN:$ANDROID_PLATFORM_TOOLS:/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin
+BASE_PATH=/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin:
+
+# OSX specific environment stuff
+if [ $(uname) == Darwin ]; then
+    # Set Homebrew Cask environment variables
+    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+    # Add brew binaries to the path (at least the ones I prefer over the OSX defaults)
+    TEX="/Library/TeX/texbin/"                       # LaTeX stuff
+    CRL="$(brew --prefix curl)/bin"                  # Curl Executables path
+    SSL="$(brew --prefix openssl)/bin"               # Openssl Executables path
+    CRE="$(brew --prefix coreutils)/libexec/gnubin"  # Coreutils Executables path
+    BRW="$(brew --prefix)/bin:$(brew --prefix)/sbin" # Brew Binaries
+    export PATH=$TEX:$CRE:$BRW:$CRL:$SSL:/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin
+
+    # Set up completion things for homebrew
+    if [ -d "/usr/local/etc/bash_completion.d" ]; then
+        for x in /usr/local/etc/bash_completion.d/*; do
+            source $x
+        done
+    fi
+fi
+
+# Linux specific environment stuff
+if [ $(uname) == Linux ]; then
+    export PATH=$BASE_PATH:$HOME/.local/bin
+
+    # If we're on WSL, add a few windows binaries to the path
+    if [ /bin/grep -q Microsoft /proc/version ]; then
+        # I symlink things I like to `~/.msbin` and just add that to the path to minimise clutter
+        ln -f -s "/mnt/c/Program Files/Microsoft VS Code/bin/code" ~/.msbin
+        ln -f -s "/mnt/c/Windows/explorer.exe" ~/.msbin
+        export PATH=$PATH:~/.msbin/
+    fi
+
+    # Add linuxbrew bins to path
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)	
+
+    # Completion for linuxbrew
+    if [ -d "/home/linuxbrew/.linuxbrew/etc/bash_completion.d/" ]; then
+        for x in /usr/local/etc/bash_completion.d/*; do
+            source $x
+        done
+    fi
+fi
 
 # Editor
 export EDITOR="emacs"
@@ -89,41 +115,22 @@ if [ -f ~/.bash_aliases ]; then
 	source ~/.bash_aliases
 fi
 
-###############################
-### Setup things like rbenv ###
-###############################
+##################################
+### Init some shell extensions ###
+##################################
 
 # rbenv
-eval "$(rbenv init -)"
-
-# pyenv
-eval "$(pyenv init -)"
-
-# Setup direnv
-eval "$(direnv hook bash)"
-
-# Set up thefuck
-eval "$(thefuck --alias)"
-
-##########################
-### OS Specific Setups ###
-##########################
-
-# OSX
-if [ $(uname) == Darwin ]; then
-    # Set Homebrew Cask environment variables
-    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-    # Make Homebrew play nicely with pyenv
-    alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
-
-    # Add extra bash completions from homebrew
-    for x in /usr/local/etc/bash_completion.d/*; do
-        source $x
-    done
+if command -v rbenv 1>/dev/null 2>&1; then
+	eval "$(rbenv init -)"
 fi
 
-# Linux
-if [ $(uname) == Linux ]; then
-    DO_NOTHING = true
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+	eval "$(pyenv init -)"
+	alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
+fi
+
+# Set up thefuck
+if command -v thefuck 1>/dev/null 2>&1; then
+	eval "$(thefuck --alias)"
 fi
