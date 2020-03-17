@@ -1,0 +1,14 @@
+;; General Settings
+
+(setq require-final-newline t)      ; Keep a newline at the end of each file, like a good Unix programmer
+
+;; Backup Settings
+
+(setq backup-directory-alist        ; Keep saves in some hidden tree we can't see
+    `(("." . "~/.emacs.backups/"))) ; Specifically in ~/.emacs.backups/
+
+(setq backup-by-copying t)          ; Don't clobber symlinks whem making backups
+
+(setq delete-old-versions t         ; Delete old versions of backup files
+   kept-new-versions 6              ; Keep 6 from the current enditing session
+   kept-old-versions 4)             ; Keep 4 from previous editing sessions
