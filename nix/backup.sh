@@ -14,7 +14,7 @@ else # OSX
     cp -v ~/.bash_profile ./dot_bash_full
    
     # Backup Spectacle
-    cp -f ~/Library/Application\ Support/Spectacle/Shortcuts.json ./SpectacleShortcuts.json
+    cp -f ~/Library/Application\ Support/Spectacle/Shortcuts.json ../macos/SpectacleShortcuts.json
     
     # Backup VSCode
     cd ../vscode && code --list-extensions > extensions.txt && cp ~/Library/Application\ Support/Code/User/*.json ./
