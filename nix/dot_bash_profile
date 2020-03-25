@@ -69,6 +69,9 @@ if [ $(uname) == Linux ]; then
             source $x
         done
     fi
+
+    # I only have one linux specific alias, so I leave it here instead of the aliases file.
+    alias apt_upgrade_clean='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean'
 fi
 
 # Editor
@@ -132,7 +135,11 @@ fi
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"
-	alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
+
+    # Make pyenv play nicely with linuxbrew
+    if [ $(uname) == Linux ]; then
+        alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
+    fi
 fi
 
 # Set up thefuck
