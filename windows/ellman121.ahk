@@ -1,29 +1,29 @@
 #SingleInstance force
 
 ^!e::
-Send, €
+Send, �
 Return
 
 ^!a::
-Send, ä
+Send, �
 Return
 
 +^!a::
-Send, Ä
+Send, �
 Return
 
 ^!o::
-Send, ö
+Send, �
 Return
 
 +^!o::
-Send, Ö
+Send, �
 Return
 
 ^!u::
-Send, ü
+Send, �
 Return
 
 +^!u::
-Send, Ü
+Send, �
 Return
