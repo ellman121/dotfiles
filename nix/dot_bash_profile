@@ -20,7 +20,7 @@ export GOBIN=$HOME/go/bin
 #   - General bin    /usr/bin
 #   - General sbin   /usr/sbin
 #   - User bin      ~/bin
-BASE_PATH=/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin:
+BASE_PATH=/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin
 
 # OSX specific environment stuff
 if [ $(uname) == Darwin ]; then
@@ -30,10 +30,10 @@ if [ $(uname) == Darwin ]; then
     # Add brew binaries to the path (at least the ones I prefer over the OSX defaults)
     TEX="/Library/TeX/texbin/"                       # LaTeX stuff
     CRL="$(brew --prefix curl)/bin"                  # Curl Executables path
-    SSL="$(brew --prefix openssl)/bin"               # Openssl Executables path
+    SSL="$(brew --prefix openssl)/bin"               # OpenSSL Executables path
     CRE="$(brew --prefix coreutils)/libexec/gnubin"  # Coreutils Executables path
     BRW="$(brew --prefix)/bin:$(brew --prefix)/sbin" # Brew Binaries
-    export PATH=$TEX:$CRE:$BRW:$CRL:$SSL:/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin
+    export PATH=$TEX:$CRE:$BRW:$CRL:$SSL:$BASE_PATH
 
     # Set up completion things for homebrew
     if [ -d "/usr/local/etc/bash_completion.d" ]; then
@@ -52,8 +52,11 @@ if [ $(uname) == Linux ]; then
 
     # If we're on WSL, add a few windows binaries to the path
     if [ -d "/mnt/c/Windows" ]; then
-        # I symlink things I like to `~/.msbin` and just add that to the path to minimise clutter
-        ln -f -s "/mnt/c/Program Files/Microsoft VS Code/bin/code" ~/.msbin
+        # I symlink some things from Windows-land to `~/.msbin`
+        if [ ! -h $HOME"/.msbin/code" ]; then
+            ln -s -f "/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code" $HOME"/.msbin/code"
+        fi
+
         export PATH=$PATH:~/.msbin
 
         alias explorer="/mnt/c/Windows/explorer.exe"
