@@ -1,4 +1,4 @@
-#SingleInstance force
+#SingleInstance, force
 
 ^!e::
 Send, €
@@ -26,4 +26,18 @@ Return
 
 +^!u::
 Send, Ü
+Return
+
+^!n::
+Send, ñ
+Return
+
++^!n::
+Send, Ñ
+Return
+
+^!\::
+now := A_NowUTC
+EnvSub, now, 1970, seconds
+Send, %now%
 Return
