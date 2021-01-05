@@ -1,0 +1,123 @@
+#############
+### zshrc ###
+#############
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+
+##############################
+### Environment Management ###
+##############################
+
+if [[ `uname` == Darwin ]]; then
+    # Add brew binaries to the path (at least the ones I prefer over the OSX defaults)
+	CRL="$(brew --prefix curl)/bin"                  # Curl Executables path
+	SSL="$(brew --prefix openssl)/bin"               # OpenSSL Executables path
+	CRE="$(brew --prefix coreutils)/libexec/gnubin"  # Coreutils Executables path
+	export PATH=$CRE:$CRL:$SSL:$PATH
+fi
+
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+    zsh-users/zsh-completions
+
+#################
+### Behaviour ###
+#################
+
+# Prompt Setup
+zinit light denysdovhan/spaceship-prompt
+
+SPACESHIP_PROMPT_ORDER=(
+  time          # Time stamps section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  line_sep      # Line break
+  user          # Username section
+  host          # Hostname section
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+SPACESHIP_DIR_PREFIX=""
+SPACESHIP_DIR_TRUNC=3
+SPACESHIP_USER_PREFIX=""
+SPACESHIP_USER_SHOW="always"
+SPACESHIP_USER_COLOR="cyan"
+SPACESHIP_USER_SUFFIX=""
+SPACESHIP_HOST_PREFIX=" @"
+SPACESHIP_HOST_SHOW="always"
+SPACESHIP_HOST_COLOR=""
+SPACESHIP_HOST_COLOR_SSH="yellow"
+SPACESHIP_GIT_PREFIX=""
+
+# History control
+HISTCONTROL=ignoredups:ignorespace
+HISTSIZE=5000
+HISTFILESIZE=1000
+
+###########################
+### Pull in other files ###
+###########################
+
+# Private environment stuff
+if [[ -f ~/.bash_private ]]; then
+    source ~/.bash_private
+fi
+
+# Get dem aliases
+if [[ -f ~/.aliases ]]; then
+	source ~/.aliases
+fi
+
+# Platform specific aliases
+if [[ `uname` == Darwin ]]; then
+    alias finder="open"
+    alias o.="open ."
+elif [[ `uname` == Linux && -d "/mnt/c/Windows" ]]; then
+    alias explorer="/mnt/c/Windows/explorer.exe"
+    alias o.="/mnt/c/Windows/explorer.exe ."
+fi
+
+
+##################################
+### Init some shell extensions ###
+##################################
+
+# rbenv
+if command -v rbenv 1>/dev/null 2>&1; then
+	eval "$(rbenv init -)"
+fi
+
+# pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+	eval "$(pyenv init -)"
+
+    # Make pyenv play nicely with linuxbrew
+    if [[ $(uname) == Linux ]]; then
+        alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
+    fi
+fi
+
+# Set up thefuck
+if command -v thefuck 1>/dev/null 2>&1; then
+	eval "$(thefuck --alias)"
+fi

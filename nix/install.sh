@@ -9,16 +9,15 @@ elif [ $(uname) == Linux ]; then
 fi
 
 # Yes, I could (and probably should) symlink these, but not right now
-cp -v ./dot_bash_aliases ~/.bash_aliases
-cp -v ./dot_config__htop__htoprc ~/.config/htop/htoprc
+cp -v ./dot_aliases ~/.aliases
+cp -v ./dot_zshenv ~/.zshenv
+cp -v ./dot_zshrc ~/.zshrc
 cp -v ./dot_emacs ~/.emacs
 
-if [ $(uname) == Linux ]; then
-    cp -v ./dot_bash_profile ~/.bashrc
-    cp -v ./dot_bash_profile_linux ~/.bash_profile
-elif [ $(uname) == Darwin ]; then
-    cp -v ./dot_bash_profile ~/.bash_profile
+mkdir -p ~/.config/htop
+cp -v ./dot_config__htop__htoprc ~/.config/htop/htoprc
 
+if [ $(uname) == Darwin ]; then
     # Spectacle Settings
     cp -f ../macos/SpectacleShortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
 
