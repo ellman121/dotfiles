@@ -9,13 +9,12 @@ elif [ $(uname) == Linux ]; then
 fi
 
 # Yes, I could (and probably should) symlink these, but not right now
-cp -v ./dot_aliases ~/.aliases
-cp -v ./dot_zshenv ~/.zshenv
-cp -v ./dot_zshrc ~/.zshrc
-cp -v ./dot_emacs ~/.emacs
-
 mkdir -p ~/.config/htop
+mkdir -p ~/bin
+
+cp -v ./dot_emacs ~/.emacs
 cp -v ./dot_config__htop__htoprc ~/.config/htop/htoprc
+cp -a -v ./bin/* ~/bin
 
 if [ $(uname) == Darwin ]; then
     # Spectacle Settings
@@ -28,5 +27,19 @@ if [ $(uname) == Darwin ]; then
     brew bundle install
 fi
 
-# Some things I keep in ~bin
-cp -a -v ./bin/* ~/bin 
+read -r -p "Have you added brew zsh to /etc/shells, run chsh, and installed zinit? (y,n): " response
+
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  CONTINUE=true
+fi
+
+if ! $CONTINUE; then
+  echo "Please go set up zsh and zinit"
+  exit
+fi
+
+cp -v ./dot_aliases ~/.aliases
+cp -v ./dot_zshenv ~/.zshenv
+cp -v ./dot_zshrc ~/.zshrc
+
+
