@@ -18,26 +18,38 @@ export GOBIN=$HOME/go/bin
 #   - General bin    /usr/bin
 #   - General sbin   /usr/sbin
 #   - User bin      ~/bin
-export PATH=/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin
+BASE_PATH=/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin
 
-# OSX specific environment stuff
-case `uname` in
-	Darwin)
-		# Set up completion things for homebrew
-		if type brew &>/dev/null; then
-			FPATH=$(brew --prefix)/share/zsh/site-functions:/usr/local/Cellar/zsh/5.8_1/share/zsh/functions
+PLATFORM="macos"
+WSL=false
+if [[ `uname` == Linux ]]; then
+    PLATFORM="linux"
+    if [[ -d "/mnt/c/Windows" ]]; then
+        WSL=true
+    fi
+fi
 
-			autoload -Uz compinit
-			compinit
-		fi
+if [[ $PLATFORM == "macos" ]]; then
+	# Set Homebrew Cask environment variables
+	export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+	export HOMEBREW_NO_AUTO_UPDATE=1
 
-		# Set Homebrew Cask environment variables
-		export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-		export HOMEBREW_NO_AUTO_UPDATE=1
-	;;
-	Linux)
-	;;
-esac
+    # Add brew binaries to the path (at least the ones I prefer over the OSX defaults)
+	CRL="/usr/local/opt/curl/bin"                  # Curl Executables path
+	CRE="/usr/local/opt/coreutils/libexec/gnubin"  # Coreutils Executables path
+	export PATH=$CRE:$CRL:$PATH
+elif [[ $PLATFORM == "linux" ]]; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+    if [[ $WSL ]]; then
+        if [ ! -h $HOME"/.msbin/code" ]; then
+            ln -s -f "/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code" $HOME"/.msbin/code"
+        fi
+
+        export PATH=$PATH:~/.msbin
+    fi
+fi
+
 
 # Some other globals
 export EDITOR="emacs"

@@ -25,11 +25,12 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-local PLATFORM="macos"
+PLATFORM="macos"
+WSL=false
 if [[ `uname` == Linux ]]; then
     PLATFORM="linux"
     if [[ -d "/mnt/c/Windows" ]]; then
-        PLATFORM="wsl"
+        WSL=true
     fi
 fi
 
@@ -37,13 +38,14 @@ fi
 ### Environment Management ###
 ##############################
 
-if [[ $PLATFORM == "macos" ]]; then
-    # Add brew binaries to the path (at least the ones I prefer over the OSX defaults)
-	CRL="/usr/local/opt/curl/bin"                  # Curl Executables path
-	CRE="/usr/local/opt/coreutils/libexec/gnubin"  # Coreutils Executables path
-	export PATH=$CRE:$CRL:$PATH
-elif [[ $PLATFORM == "wsl" ]]; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+if type brew &>/dev/null && [[ $PLATFORM == "macos" ]]; then
+	FPATH=$(brew --prefix)/share/zsh/site-functions
+    if [[ $PLATFORM == "macos" ]]; then
+        FPATH=$FPATH:/usr/local/Cellar/zsh/5.8_1/share/zsh/functions
+    fi
+
+	autoload -Uz compinit
+	compinit
 fi
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
@@ -122,7 +124,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"
 
     # Make pyenv play nicely with linuxbrew
-    if [[ $PLATFORM == "linux" || $PLATFORM == "wsl" ]]; then
+    if [[ $PLATFORM == "linux" ]]; then
         alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
     fi
 fi
