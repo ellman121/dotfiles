@@ -31,10 +31,9 @@ zinit light-mode for \
 
 if [[ `uname` == Darwin ]]; then
     # Add brew binaries to the path (at least the ones I prefer over the OSX defaults)
-	CRL="$(brew --prefix curl)/bin"                  # Curl Executables path
-	SSL="$(brew --prefix openssl)/bin"               # OpenSSL Executables path
-	CRE="$(brew --prefix coreutils)/libexec/gnubin"  # Coreutils Executables path
-	export PATH=$CRE:$CRL:$SSL:$PATH
+	CRL="/usr/local/opt/curl/bin"                  # Curl Executables path
+	CRE="/usr/local/opt/coreutils/libexec/gnubin"  # Coreutils Executables path
+	export PATH=$CRE:$CRL:$PATH
 fi
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
@@ -109,6 +108,7 @@ fi
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
+    PYENV_ROOT="$HOME/.pyenv"
 	eval "$(pyenv init -)"
 
     # Make pyenv play nicely with linuxbrew
