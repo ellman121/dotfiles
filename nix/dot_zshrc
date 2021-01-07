@@ -25,8 +25,8 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-PLATFORM="macos"
-WSL=false
+export PLATFORM="macos"
+export WSL=false
 if [[ `uname` == Linux ]]; then
     PLATFORM="linux"
     if [[ -d "/mnt/c/Windows" ]]; then
@@ -37,6 +37,8 @@ fi
 ##############################
 ### Environment Management ###
 ##############################
+
+export CLICOLOR=1
 
 if type brew &>/dev/null && [[ $PLATFORM == "macos" ]]; then
 	FPATH=$(brew --prefix)/share/zsh/site-functions
