@@ -50,8 +50,14 @@ if type brew &>/dev/null && [[ $PLATFORM == "macos" ]]; then
 	compinit
 fi
 
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-    zsh-users/zsh-completions
+zinit wait lucid light-mode for \
+    atinit"zicompinit; zicdreplay" \
+      zdharma/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
+
 
 #################
 ### Behaviour ###
@@ -71,7 +77,7 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 SPACESHIP_DIR_PREFIX=""
-SPACESHIP_DIR_TRUNC=3
+SPACESHIP_DIR_TRUNC_REPO=false
 SPACESHIP_USER_PREFIX=""
 SPACESHIP_USER_SHOW="always"
 SPACESHIP_USER_COLOR="cyan"
