@@ -21,7 +21,13 @@ zinit light-mode for \
     zinit-zsh/z-a-rust \
     zinit-zsh/z-a-as-monitor \
     zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zinit-zsh/z-a-bin-gem-node \
+    atinit"zicompinit; zicdreplay" \
+        zdharma/fast-syntax-highlighting \
+    atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
+    blockf atpull'zinit creinstall -q .' \
+        zsh-users/zsh-completions
 
 ### End of Zinit's installer chunk
 
@@ -50,15 +56,6 @@ if type brew &>/dev/null && [[ $PLATFORM == "macos" ]]; then
 	compinit
 fi
 
-zinit wait lucid light-mode for \
-    atinit"zicompinit; zicdreplay" \
-      zdharma/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
-      zsh-users/zsh-completions
-
-
 #################
 ### Behaviour ###
 #################
@@ -67,26 +64,23 @@ zinit wait lucid light-mode for \
 zinit light denysdovhan/spaceship-prompt
 
 SPACESHIP_PROMPT_ORDER=(
-  time          # Time stamps section
-  dir           # Current directory section
-  git           # Git section (git_branch + git_status)
-  line_sep      # Line break
-  user          # Username section
-  host          # Hostname section
-  exit_code     # Exit code section
-  char          # Prompt character
+  dir       # Current directory section
+  git       # Git section (git_branch + git_status)
+  line_sep  # Line break
+  user      # Username section
+  host      # Hostname section
+  exec_time # Execution time
+  exit_code # Exit code section
+  char      # Prompt character
 )
-SPACESHIP_DIR_PREFIX=""
+SPACESHIP_PROMPT_PREFIXES_SHOW=false
 SPACESHIP_DIR_TRUNC_REPO=false
-SPACESHIP_USER_PREFIX=""
 SPACESHIP_USER_SHOW="always"
 SPACESHIP_USER_COLOR="cyan"
-SPACESHIP_USER_SUFFIX=""
-SPACESHIP_HOST_PREFIX=" @"
+SPACESHIP_USER_SUFFIX=" @"
 SPACESHIP_HOST_SHOW="always"
-SPACESHIP_HOST_COLOR=""
-SPACESHIP_HOST_COLOR_SSH="yellow"
-SPACESHIP_GIT_PREFIX=""
+SPACESHIP_HOST_COLOR="grey"
+SPACESHIP_HOST_COLOR_SSH="red"
 
 # History control
 HISTCONTROL=ignoredups:ignorespace
@@ -120,6 +114,11 @@ fi
 ##################################
 ### Init some shell extensions ###
 ##################################
+
+# direnv
+if command -v direnv 1>/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi
 
 # rbenv
 if command -v rbenv 1>/dev/null 2>&1; then
