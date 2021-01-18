@@ -44,8 +44,6 @@ fi
 ### Environment Management ###
 ##############################
 
-export CLICOLOR=1
-
 if type brew &>/dev/null && [[ $PLATFORM == "macos" ]]; then
 	FPATH=$(brew --prefix)/share/zsh/site-functions
     if [[ $PLATFORM == "macos" ]]; then
@@ -87,6 +85,17 @@ HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=5000
 HISTFILESIZE=1000
 
+# ls Colors
+export CLICOLOR=1
+export LS_COLORS='di=34:ln=35;40:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+if command -v vivid 1>/dev/null 2>&1; then
+    if [ $COLORTERM = 'truecolor' ] || [ $COLORTERM = '24bit' ]; then
+        export LS_COLORS="$(vivid generate molokai)"
+    else
+        export LS_COLORS="$(vivid -m 8-bit generate molokai)"
+    fi
+fi
+
 ###########################
 ### Pull in other files ###
 ###########################
@@ -109,7 +118,6 @@ elif [[ $PLATFORM == "wsl" ]]; then
     alias explorer="/mnt/c/Windows/explorer.exe"
     alias o.="/mnt/c/Windows/explorer.exe ."
 fi
-
 
 ##################################
 ### Init some shell extensions ###
