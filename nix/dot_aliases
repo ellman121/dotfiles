@@ -1,8 +1,3 @@
-alias l='ls -CF'
-alias la='ls -A'
-alias ll='ls -alhF'
-alias lm='lsmac -alF | grep /'
-alias mkdir='mkdir -p'
 alias SimpleHTTP='python ~/bin/SimpleHTTP.py'
 alias SimpleFTP='~/bin/SimpleFTP.sh'
 alias ytdla='youtube-dl --extract-audio --audio-quality 0 --audio-format mp3'

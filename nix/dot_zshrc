@@ -114,9 +114,17 @@ fi
 if [[ $PLATFORM == "macos" ]]; then
     alias finder="open"
     alias o.="open ."
-elif [[ $PLATFORM == "wsl" ]]; then
+    alias l="gls --color"
+    alias ls="gls --color"
+    alias la="gls --color -a"
+    alias ll="gls --color -al"
+elif [[ $WSL ]]; then
     alias explorer="/mnt/c/Windows/explorer.exe"
     alias o.="/mnt/c/Windows/explorer.exe ."
+    alias l="ls --color"
+    alias ls="ls --color"
+    alias la="ls --color -a"
+    alias ll="ls --color -al"
 fi
 
 ##################################
