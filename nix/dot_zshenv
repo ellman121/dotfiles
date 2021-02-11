@@ -37,7 +37,7 @@ if [[ $PLATFORM == "macos" ]]; then
     # Add brew binaries to the path (at least the ones I prefer over the OSX defaults)
 	CRL="/usr/local/opt/curl/bin"                  # Curl Executables path
 	CRE="/usr/local/opt/coreutils/libexec/gnubin"  # Coreutils Executables path
-	export PATH=$CRE:$CRL:$PATH
+	export PATH=$CRE:$CRL:$BASE_PATH
 elif [[ $PLATFORM == "linux" ]]; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
@@ -46,7 +46,7 @@ elif [[ $PLATFORM == "linux" ]]; then
             ln -s -f "/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code" $HOME"/.msbin/code"
         fi
 
-        export PATH=$PATH:~/.msbin
+        export PATH=$BASE_PATH:~/.msbin
     fi
 fi
 
