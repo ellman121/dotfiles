@@ -8,13 +8,13 @@ elif [ $(uname) == Linux ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-# Yes, I could (and probably should) symlink these, but not right now
 mkdir -p ~/.config/htop
 mkdir -p ~/bin
 
-cp -v ./dot_emacs ~/.emacs
-cp -v ./dot_config__htop__htoprc ~/.config/htop/htoprc
-cp -a -v ./bin/* ~/bin
+ln -s ./dot_emacs ~/.emacs
+ln -s ./dot_gitconfig ~/.gitconfig
+ln -s ./dot_config__htop__htoprc ~/.config/htop/htoprc
+cp -a -v ./bin/* ~/bin # I don't want to symlink executables
 
 if [ $(uname) == Darwin ]; then
     # Spectacle Settings
@@ -38,8 +38,6 @@ if ! $CONTINUE; then
   exit
 fi
 
-cp -v ./dot_aliases ~/.aliases
-cp -v ./dot_zshenv ~/.zshenv
-cp -v ./dot_zshrc ~/.zshrc
-
-
+ln -s ./dot_aliases ~/.aliases
+ln -s ./dot_zshenv ~/.zshenv
+ln -s ./dot_zshrc ~/.zshrc
