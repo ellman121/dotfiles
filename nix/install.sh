@@ -11,9 +11,11 @@ fi
 mkdir -p ~/.config/htop
 mkdir -p ~/bin
 
-ln -s ./dot_emacs ~/.emacs
-ln -s ./dot_gitconfig ~/.gitconfig
-ln -s ./dot_config__htop__htoprc ~/.config/htop/htoprc
+CWD=$(pwd)
+
+ln -s $CWD/dot_emacs ~/.emacs
+ln -s $CWD/dot_gitconfig ~/.gitconfig
+ln -s $CWD/dot_config__htop__htoprc ~/.config/htop/htoprc
 cp -a -v ./bin/* ~/bin # I don't want to symlink executables
 
 if [ $(uname) == Darwin ]; then
@@ -38,6 +40,6 @@ if ! $CONTINUE; then
   exit
 fi
 
-ln -s ./dot_aliases ~/.aliases
-ln -s ./dot_zshenv ~/.zshenv
-ln -s ./dot_zshrc ~/.zshrc
+ln -s $CWD/dot_aliases ~/.aliases
+ln -s $CWD/dot_zshenv ~/.zshenv
+ln -s $CWD/dot_zshrc ~/.zshrc
