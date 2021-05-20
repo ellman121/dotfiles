@@ -40,8 +40,6 @@ if [[ $PLATFORM == "macos" ]]; then
     BRW="/usr/local/bin:/usr/local/sbin"           # Homebrew bin and sbin
 	export PATH=$CRE:$CRL:$BRW:$BASE_PATH:
 elif [[ $PLATFORM == "linux" ]]; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
     if [[ $WSL ]]; then
         if [ ! -h $HOME"/.msbin/code" ]; then
             ln -s -f "/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code" $HOME"/.msbin/code"
@@ -49,6 +47,8 @@ elif [[ $PLATFORM == "linux" ]]; then
 
         export PATH=$BASE_PATH:~/.msbin
     fi
+
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
 #############
