@@ -51,7 +51,6 @@ brew "zsh"
 cask "alfred"
 cask "appcleaner"
 cask "awareness"
-cask "caffeine"
 cask "cheatsheet"
 cask "cyberduck"
 cask "discord"
@@ -79,5 +78,6 @@ cask "visual-studio-code"
 cask "vlc"
 cask "xquartz"
 cask "zoom"
+mas "Amphetamine", id: 937984704
 mas "Developer", id: 640199958
 mas "Xcode", id: 497799835
