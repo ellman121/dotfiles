@@ -1,128 +1,158 @@
 {
-    // Application behaviour
-    "debug.toolBarLocation": "docked",
-    "explorer.confirmDelete": false,
-    "explorer.openEditors.visible": 0,
-    "material-icon-theme.showReloadMessage": false,
-    "search.showLineNumbers": true,
-    "telemetry.enableTelemetry": false,
-    "window.openFoldersInNewWindow": "off",
-    "workbench.commandPalette.history": 0,
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.settings.editor": "json",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.tips.enabled": false,
-    
-    // Editor behaviour
-    "breadcrumbs.enabled": true,
-    "debug.inlineValues": true,
-    "editor.cursorSmoothCaretAnimation": true,
-    "editor.formatOnPaste": true,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.renderWhitespace": "none",
-    "editor.smoothScrolling": true,
-    "editor.suggest.localityBonus": true,
-    "editor.suggestSelection": "first",
-    "explorer.confirmDragAndDrop": false,
-    "files.insertFinalNewline": true,
-    "liveServer.settings.donotVerifyTags": true,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "emmet.showAbbreviationSuggestions": false,
-    "emmet.excludeLanguages": [
-        "pug",
-        "markdown",
-        "javascript",
-        "typescript",
-        "typescriptreact",
-    ],
+  // Application behaviour
+  "debug.toolBarLocation": "docked",
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.openEditors.visible": 0,
+  "gitlens.hovers.currentLine.details": false,
+  "material-icon-theme.showReloadMessage": false,
+  "search.showLineNumbers": true,
+  "telemetry.enableTelemetry": false,
+  "window.openFoldersInNewWindow": "off",
+  "workbench.commandPalette.history": 0,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.settings.editor": "json",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.tips.enabled": false,
+  "files.exclude": {
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "node_modules": true
+  },
 
-    // Debugging mode fixes
-    "debug.enableAllHovers": true,
-    "debug.showInStatusBar": "always",
-    
-    // Git behaviour
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "git.enableSmartCommit": false,
-    
-    // Theme settings
-    "material-icon-theme.folders.theme": "specific",
-    "window.title": "${appName}${separator}${dirty}${rootName}",
-    "window.zoomLevel": 0,
-    "workbench.colorTheme": "Ariake Dark",
-    "workbench.editor.labelFormat": "medium",
-    "workbench.iconTheme": "material-icon-theme",
-    
-    // Font fixes
-    "editor.fontFamily": "monoid",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 12,
-    
-    // Customize Terminal
-    "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.shell.osx": "/usr/local/bin/bash",
-    "terminal.integrated.splitCwd": "workspaceRoot",
-    
-    // Make search great again
-    "search.exclude": {
-        "**/android/app/build": true, // RN Android build folder
-        "**/bower_components": true, // Bower
-        "**/ios/build": true, // RN iOS build folder
-        "**/ios/Pods": true, // iOS Pods code
-        "**/lib": true, // Compiled javascript
-        "**/node_modules": true // NPM
-    },
-    
-    // Add some things to alignment
-    "alignment.chars": {
-        ":": {
-            "spaceBefore": 1,
-            "spaceAfter": 1
-        },
-        "from": {
-            "spaceBefore": 1,
-            "spaceAfter": 1
-        }
-    },
-    
-    // Extension specific Settings
-    "material-icon-theme.showUpdateMessage": false,
-    
-    /* Language specific fixes */
-    "files.associations": {
-        "Fastfile": "ruby",
-        "*.podspec": "ruby"
-    },
+  // Editor behaviour
+  "breadcrumbs.enabled": true,
+  "debug.inlineValues": true,
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.formatOnPaste": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderWhitespace": "none",
+  "editor.smoothScrolling": true,
+  "editor.suggest.localityBonus": true,
+  "editor.suggestSelection": "first",
+  "explorer.confirmDragAndDrop": false,
+  "files.insertFinalNewline": true,
+  "gitlens.defaultDateFormat": null,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.statusBar.enabled": false,
+  "liveServer.settings.donotVerifyTags": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.excludeLanguages": [
+    "pug",
+    "markdown",
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ],
 
-    // Golang
-    "go.inferGopath": true,
-    
-    // C/C++
-    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4 }",
-    "C_Cpp.intelliSenseEngine": "Default",
-    
-    // Python
-    "python.linting.pylintEnabled": true,
-    "python.formatting.provider": "black",
-    "python.pythonPath": "python3",
-    "[python]": {
-        // Black does not support partial formatting
-        "editor.formatOnPaste": false
-    },
-    
-    // Javascript / JSON
-    "[jsonc]": {
-        // It annoys me when I paste a json file and it
-        // removes whitespace between lines
-        "editor.formatOnPaste": false
-    },
-    "[json]": {
-        // It annoys me when I paste a json file and it
-        // removes whitespace between lines
-        "editor.formatOnPaste": false
-    },
+  // Debugging mode fixes
+  "debug.enableAllHovers": true,
+  "debug.showInStatusBar": "always",
 
-    // LaTeX stuff
-    "latex-workshop.view.pdf.viewer": "tab",
+  // Git behaviour
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+
+  // Theme settings
+  "material-icon-theme.folders.theme": "specific",
+  "window.title": "${appName}${separator}${dirty}${rootName}",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Ariake Dark",
+  "workbench.editor.labelFormat": "medium",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.tree.indent": 16,
+
+  // Font fixes
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+
+  // Customize Terminal
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.splitCwd": "workspaceRoot",
+  "terminal.integrated.fontSize": 14,
+
+  // Make search great again
+  "search.exclude": {
+    "**/android/app/build": true, // RN Android build folder
+    "**/bower_components": true, // Bower
+    "**/ios/build": true, // RN iOS build folder
+    "**/ios/Pods": true, // iOS Pods code
+    "**/lib": true, // Compiled javascript
+    "**/node_modules": true // NPM
+  },
+
+  // Add some things to alignment
+  "alignment.chars": {
+    ":": {
+      "spaceBefore": 1,
+      "spaceAfter": 1
+    },
+    "from": {
+      "spaceBefore": 1,
+      "spaceAfter": 1
+    }
+  },
+
+  // Extension specific Settings
+  "material-icon-theme.showUpdateMessage": false,
+
+  /* Language specific fixes */
+  "files.associations": {
+    "Fastfile": "ruby",
+    "*.podspec": "ruby"
+  },
+
+  // Golang
+  "go.inferGopath": true,
+
+  // C/C++
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4 }",
+  "C_Cpp.intelliSenseEngine": "Default",
+
+  // Python
+  "python.linting.pylintEnabled": true,
+  "python.formatting.provider": "black",
+  "[python]": {
+    // Black does not support partial formatting
+    "editor.formatOnPaste": false
+  },
+
+  // Javascript / JSON
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[jsonc]": {
+    // It annoys me when I paste a json file and it
+    // removes whitespace between lines
+    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    // It annoys me when I paste a json file and it
+    // removes whitespace between lines
+    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // TS Server behavior
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  // LaTeX stuff
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "python.showStartPage": false
 }
