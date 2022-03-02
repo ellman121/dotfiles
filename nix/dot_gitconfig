@@ -11,6 +11,6 @@
 [init]
 	defaultBranch = main
 [push]
-	default = current
+	default = upstream
 [fetch]
 	prune = true
