@@ -14,3 +14,9 @@
 	default = upstream
 [fetch]
 	prune = true
+[alias]
+	tag-mv = "!f() { \
+		git tag $2 $1; \
+		git tag -d $1; \
+		git push origin :refs/tags/$1; \
+	}; f"
