@@ -61,6 +61,3 @@ if type brew &>/dev/null && [[ $PLATFORM == "macos" ]]; then
     autoload -Uz compinit
     compinit
 fi
-
-# Some other globals
-export EDITOR="emacs"
