@@ -56,7 +56,7 @@ fi
 #############
 
 if type brew &>/dev/null && [[ $PLATFORM == "macos" ]]; then
-	FPATH=$(brew --prefix)/share/zsh/site-functions:/usr/local/Cellar/zsh/5.8_1/share/zsh/functions
+	export FPATH=$(brew --prefix)/share/zsh/functions:$(brew --prefix)/share/zsh/site-functions
     rm -f ~/.zcompdump
     autoload -Uz compinit
     compinit
