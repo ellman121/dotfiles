@@ -6,6 +6,9 @@
 ### Environment Management ###
 ##############################
 
+# Misc
+export LANG=en_US.UTF-8
+
 # Goland Environment
 export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
@@ -20,6 +23,7 @@ export GOBIN=$HOME/go/bin
 #   - User bin      ~/bin
 BASE_PATH=/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin
 
+EDITOR="emacs"
 PLATFORM="macos"
 WSL=false
 if [[ `uname` == Linux ]]; then
