@@ -7,7 +7,8 @@
   "gitlens.hovers.currentLine.details": false,
   "material-icon-theme.showReloadMessage": false,
   "search.showLineNumbers": true,
-  "telemetry.enableTelemetry": false,
+  "security.workspace.trust.untrustedFiles": "open",
+  "telemetry.telemetryLevel": "off",
   "window.openFoldersInNewWindow": "off",
   "workbench.commandPalette.history": 0,
   "workbench.editor.highlightModifiedTabs": true,
@@ -21,24 +22,25 @@
     "**/.DS_Store": true,
     "node_modules": true
   },
-
+  
   // Editor behaviour
   "breadcrumbs.enabled": true,
-  "debug.inlineValues": true,
-  "editor.cursorSmoothCaretAnimation": true,
+  "debug.inlineValues": "on",
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.cursorSmoothCaretAnimation": "on",
   "editor.formatOnPaste": true,
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "none",
   "editor.smoothScrolling": true,
   "editor.suggest.localityBonus": true,
   "editor.suggestSelection": "first",
+  "editor.tabSize": 4,
   "explorer.confirmDragAndDrop": false,
   "files.insertFinalNewline": true,
   "gitlens.defaultDateFormat": null,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.statusBar.enabled": false,
   "liveServer.settings.donotVerifyTags": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "emmet.showAbbreviationSuggestions": false,
   "emmet.excludeLanguages": [
     "pug",
@@ -48,14 +50,22 @@
     "typescriptreact"
   ],
 
+  // Theme adjustments
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#85b1e0"
+  },
+
   // Debugging mode fixes
-  "debug.enableAllHovers": true,
   "debug.showInStatusBar": "always",
 
   // Git behaviour
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
+  "git.mergeEditor": false,
+  "git.openRepositoryInParentFolders": "always",
+  "gitlens.views.repositories.showContributors": false,
+  "gitlens.views.repositories.showRemotes": false,
 
   // Theme settings
   "material-icon-theme.folders.theme": "specific",
@@ -70,8 +80,9 @@
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
-
+  
   // Customize Terminal
+  "terminal.integrated.enableMultiLinePasteWarning": false,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.splitCwd": "workspaceRoot",
@@ -87,18 +98,6 @@
     "**/node_modules": true // NPM
   },
 
-  // Add some things to alignment
-  "alignment.chars": {
-    ":": {
-      "spaceBefore": 1,
-      "spaceAfter": 1
-    },
-    "from": {
-      "spaceBefore": 1,
-      "spaceAfter": 1
-    }
-  },
-
   // Extension specific Settings
   "material-icon-theme.showUpdateMessage": false,
 
@@ -108,51 +107,69 @@
     "*.podspec": "ruby"
   },
 
-  // Golang
-  "go.inferGopath": true,
-
   // C/C++
   "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4 }",
-  "C_Cpp.intelliSenseEngine": "Default",
+  "C_Cpp.intelliSenseEngine": "default",
+  "[c]": {
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  },
+  "[cpp]": {
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  },
+
+  // Goland
+  "go.toolsManagement.autoUpdate": true,
 
   // Python
   "python.linting.pylintEnabled": true,
-  "python.formatting.provider": "black",
-  "[python]": {
-    // Black does not support partial formatting
-    "editor.formatOnPaste": false
-  },
 
   // Javascript / JSON
   "javascript.updateImportsOnFileMove.enabled": "always",
 
   "[javascript]": {
+    "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[jsonc]": {
+    "editor.tabSize": 2,
     // It annoys me when I paste a json file and it
     // removes whitespace between lines
     "editor.formatOnPaste": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
+    "editor.tabSize": 2,
     // It annoys me when I paste a json file and it
     // removes whitespace between lines
     "editor.formatOnPaste": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
-  // TS Server behavior
+  // TS behavior
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
-  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   // LaTeX stuff
   "latex-workshop.view.pdf.viewer": "tab",
 
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
-  },
-  "python.showStartPage": false
+    "*.ipynb": "jupyter-notebook",
+    "*.strings": "default"
+  }
 }
