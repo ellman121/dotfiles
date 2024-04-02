@@ -1,6 +1,6 @@
 #SingleInstance, force
 
-^!e::
++!#::
 Send, €
 Return
 
