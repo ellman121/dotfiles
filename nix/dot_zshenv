@@ -40,9 +40,8 @@ if [[ $PLATFORM == "macos" ]]; then
 
     # Add brew binaries to the path (at least the ones I prefer over the OSX defaults)
 	CRL="/usr/local/opt/curl/bin"                  # Curl Executables path
-	CRE="/usr/local/opt/coreutils/libexec/gnubin"  # Coreutils Executables path
-    BRW="/usr/local/bin:/usr/local/sbin"           # Homebrew bin and sbin
-	export PATH=$CRE:$CRL:$BRW:$BASE_PATH:
+    BRW="/opt/homebrew/bin"                        # Homebrew bin
+	export PATH=$CRL:$BRW:$BASE_PATH:
 elif [[ $PLATFORM == "linux" ]]; then
     if [[ $WSL ]]; then
         if [ ! -h $HOME"/.msbin/code" ]; then
@@ -53,15 +52,4 @@ elif [[ $PLATFORM == "linux" ]]; then
     fi
 
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
-
-#############
-### FPATH ###
-#############
-
-if type brew &>/dev/null && [[ $PLATFORM == "macos" ]]; then
-	export FPATH=$(brew --prefix)/share/zsh/functions:$(brew --prefix)/share/zsh/site-functions
-    rm -f ~/.zcompdump
-    autoload -Uz compinit
-    compinit
 fi
