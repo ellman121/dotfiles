@@ -1,166 +1,165 @@
 {
-    // Application behaviour
-    "debug.toolBarLocation": "docked",
-    "explorer.compactFolders": false,
-    "explorer.confirmDelete": false,
-    "explorer.openEditors.visible": 1,
-    "search.showLineNumbers": true,
-    "security.workspace.trust.untrustedFiles": "open",
-    "telemetry.telemetryLevel": "off",
-    "window.openFoldersInNewWindow": "off",
-    "workbench.commandPalette.history": 0,
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.settings.editor": "json",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.tips.enabled": false,
-    "files.exclude": {
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/CVS": true,
-      "**/.DS_Store": true,
-      "node_modules": true
-    },
-    
-    // Editor behaviour
-    "breadcrumbs.enabled": true,
-    "debug.inlineValues": "on",
-    "editor.unicodeHighlight.nonBasicASCII": false,
-    "editor.cursorSmoothCaretAnimation": "on",
-    "editor.formatOnPaste": true,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.renderWhitespace": "none",
-    "editor.smoothScrolling": true,
-    "editor.suggest.localityBonus": true,
-    "editor.suggestSelection": "first",
-    "editor.tabSize": 4,
-    "explorer.confirmDragAndDrop": false,
-    "files.insertFinalNewline": true,
-    "liveServer.settings.donotVerifyTags": true,
-    "emmet.showAbbreviationSuggestions": false,
-    "emmet.excludeLanguages": [
-      "pug",
-      "markdown",
-      "javascript",
-      "typescript",
-      "typescriptreact"
-    ],
+  // Application behaviour
+  "debug.toolBarLocation": "docked",
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.openEditors.visible": 1,
+  "search.showLineNumbers": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "telemetry.telemetryLevel": "off",
+  "window.openFoldersInNewWindow": "off",
+  "workbench.commandPalette.history": 0,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.settings.editor": "json",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.tips.enabled": false,
+  "files.exclude": {
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "node_modules": true
+  },
   
-    // Theme adjustments
-    "workbench.colorCustomizations": {
-      "tab.activeBorder": "#85b1e0"
-    },
+  // Editor behaviour
+  "breadcrumbs.enabled": true,
+  "debug.inlineValues": "on",
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.formatOnPaste": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderWhitespace": "none",
+  "editor.smoothScrolling": true,
+  "editor.suggest.localityBonus": true,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 4,
+  "explorer.confirmDragAndDrop": false,
+  "files.insertFinalNewline": true,
+  "liveServer.settings.donotVerifyTags": true,
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.excludeLanguages": [
+    "pug",
+    "markdown",
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Theme adjustments
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#85b1e0"
+  },
+
+  // Debugging mode fixes
+  "debug.showInStatusBar": "always",
+
+  // Git behaviour
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.mergeEditor": false,
+  "git.openRepositoryInParentFolders": "always",
+
+  // Theme settings
+  "material-icon-theme.folders.theme": "specific",
+  "window.title": "${appName}${separator}${dirty}${rootName}",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Ariake Dark",
+  "workbench.editor.labelFormat": "medium",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.tree.indent": 16,
+
+  // Font fixes
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
   
-    // Debugging mode fixes
-    "debug.showInStatusBar": "always",
-  
-    // Git behaviour
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "git.enableSmartCommit": true,
-    "git.mergeEditor": false,
-    "git.openRepositoryInParentFolders": "always",
-  
-    // Theme settings
-    "material-icon-theme.folders.theme": "specific",
-    "window.title": "${appName}${separator}${dirty}${rootName}",
-    "window.zoomLevel": 0,
-    "workbench.colorTheme": "Ariake Dark",
-    "workbench.editor.labelFormat": "medium",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.tree.indent": 16,
-  
-    // Font fixes
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 14,
-    
-    // Customize Terminal
-    "terminal.integrated.enableMultiLinePasteWarning": false,
-    "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.splitCwd": "workspaceRoot",
-    "terminal.integrated.fontSize": 14,
-  
-    // Make search great again
-    "search.exclude": {
-      "**/android/app/build": true, // RN Android build folder
-      "**/bower_components": true, // Bower
-      "**/ios/build": true, // RN iOS build folder
-      "**/ios/Pods": true, // iOS Pods code
-      "**/lib": true, // Compiled javascript
-      "**/node_modules": true // NPM
-    },
-  
-    /* Language specific fixes */
-    "files.associations": {
-      "Fastfile": "ruby",
-      "*.podspec": "ruby"
-    },
-  
-    // C/C++
-    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4 }",
-    "C_Cpp.intelliSenseEngine": "default",
-    "[c]": {
-      "editor.wordBasedSuggestions": "off",
-      "editor.suggest.insertMode": "replace",
-      "editor.semanticHighlighting.enabled": true
-    },
-    "[cpp]": {
-      "editor.wordBasedSuggestions": "off",
-      "editor.suggest.insertMode": "replace",
-      "editor.semanticHighlighting.enabled": true
-    },
-  
-    // Goland
-    "go.toolsManagement.autoUpdate": true,
-  
-    // Python
-    "python.linting.pylintEnabled": true,
-  
-    // Javascript / JSON
-    "javascript.updateImportsOnFileMove.enabled": "always",
-  
-    "[javascript]": {
-      "editor.tabSize": 2,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascriptreact]": {
-      "editor.tabSize": 2,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-      "editor.tabSize": 2,
-      // It annoys me when I paste a json file and it
-      // removes whitespace between lines
-      "editor.formatOnPaste": false,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-      "editor.tabSize": 2,
-      // It annoys me when I paste a json file and it
-      // removes whitespace between lines
-      "editor.formatOnPaste": false,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-  
-    // TS behavior
-    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "[typescript]": {
-      "editor.tabSize": 2,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescriptreact]": {
-      "editor.tabSize": 2,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-  
-    // LaTeX stuff
-    "latex-workshop.view.pdf.viewer": "tab",
-  
-    "workbench.editorAssociations": {
-      "*.ipynb": "jupyter-notebook",
-      "*.strings": "default"
-    }
+  // Customize Terminal
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.splitCwd": "workspaceRoot",
+  "terminal.integrated.fontSize": 14,
+
+  // Make search great again
+  "search.exclude": {
+    "**/android/app/build": true, // RN Android build folder
+    "**/bower_components": true, // Bower
+    "**/ios/build": true, // RN iOS build folder
+    "**/ios/Pods": true, // iOS Pods code
+    "**/lib": true, // Compiled javascript
+    "**/node_modules": true // NPM
+  },
+
+  /* Language specific fixes */
+  "files.associations": {
+    "Fastfile": "ruby",
+    "*.podspec": "ruby"
+  },
+
+  // C/C++
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4 }",
+  "C_Cpp.intelliSenseEngine": "default",
+  "[c]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  },
+  "[cpp]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  },
+
+  // Goland
+  "go.toolsManagement.autoUpdate": true,
+
+  // Python
+  "python.linting.pylintEnabled": true,
+
+  // Javascript / JSON
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.tabSize": 2,
+    // It annoys me when I paste a json file and it
+    // removes whitespace between lines
+    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    // It annoys me when I paste a json file and it
+    // removes whitespace between lines
+    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // TS behavior
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // LaTeX stuff
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook",
+    "*.strings": "default"
   }
-  
+}

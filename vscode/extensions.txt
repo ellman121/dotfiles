@@ -1,4 +1,6 @@
 esbenp.prettier-vscode
+golang.go
+james-yu.latex-workshop
 mikestead.dotenv
 ms-python.debugpy
 ms-python.python

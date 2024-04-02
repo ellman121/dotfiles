@@ -2,44 +2,34 @@
 
 ## Install Script
 
-if [ $(uname) == Darwin ]; then
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-elif [ $(uname) == Linux ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
+### Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-mkdir -p ~/.config/htop
-mkdir -p ~/bin
+# Homebrew is the dream
+brew bundle install
 
-CWD=$(pwd)
-
-ln -s $CWD/dot_emacs ~/.emacs
-ln -s $CWD/dot_gitconfig ~/.gitconfig
-ln -s $CWD/dot_config__htop__htoprc ~/.config/htop/htoprc
-cp -a -v ./bin/* ~/bin # I don't want to symlink executables
-
-if [ $(uname) == Darwin ]; then
-    # Spectacle Settings
-    cp -f ../macos/SpectacleShortcuts.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
-
-    # VSCode Settings (this only works automated on OSX)
-    cd ../vscode && for e in `cat extensions.txt`; do code --install-extension $e; done; && cp *.json ~/Library/Application\ Support/Code/User
-
-    # Homebrew is the dream
-    brew bundle install
-fi
-
-read -r -p "Have you added brew zsh to /etc/shells, run chsh, and installed zinit? (y,n): " response
+read -r -p "Is zsh (from homebrew / OSX) set to be your default shell: " response
 
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   CONTINUE=true
 fi
 
 if ! $CONTINUE; then
-  echo "Please go set up zsh and zinit"
+  echo "Please go set up zsh"
   exit
 fi
 
+# Install zinit
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+
+mkdir -p ~/.config/htop
+mkdir -p ~/bin
+
+CWD=$(pwd)
+ln -s $CWD/dot_emacs ~/.emacs
+ln -s $CWD/dot_gitconfig ~/.gitconfig
+ln -s $CWD/dot_config__htop__htoprc ~/.config/htop/htoprc
+cp -a -v ./bin/* ~/bin # I don't want to symlink executables
 ln -s $CWD/dot_aliases ~/.aliases
 ln -s $CWD/dot_zshenv ~/.zshenv
 ln -s $CWD/dot_zshrc ~/.zshrc
