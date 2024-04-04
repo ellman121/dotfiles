@@ -35,10 +35,3 @@ Return
 +^!n::
 Send, Ñ
 Return
-
-# Send the current UTC Seconds
-^!\:: 
-now := A_NowUTC
-EnvSub, now, 1970, seconds
-Send, %now%
-Return
