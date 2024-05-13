@@ -31,5 +31,4 @@ ln -s $CWD/dot_gitconfig ~/.gitconfig
 ln -s $CWD/dot_config__htop__htoprc ~/.config/htop/htoprc
 cp -a -v ./bin/* ~/bin # I don't want to symlink executables
 ln -s $CWD/dot_aliases ~/.aliases
-ln -s $CWD/dot_zshenv ~/.zshenv
 ln -s $CWD/dot_zshrc ~/.zshrc
