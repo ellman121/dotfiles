@@ -10,3 +10,6 @@ alias l="ls --color"
 alias ls="ls --color"
 alias la="ls --color -a"
 alias ll="ls --color -al"
+alias gc="git checkout"
+alias gflap='git commit -am "fix lint" && git push'
+alias gflapf='git commit -am "fix lint" && git push -f'

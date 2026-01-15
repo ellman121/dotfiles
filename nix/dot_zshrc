@@ -160,6 +160,9 @@ elif [[ $WSL ]]; then
     alias o.="/mnt/c/Windows/explorer.exe ."
 fi
 
+# Homebrew behaviour
+HOMEBREW_NO_ENV_HINTS=true
+
 #############################
 ### Init shell extensions ###
 #############################
