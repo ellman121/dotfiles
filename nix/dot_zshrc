@@ -44,13 +44,9 @@ export GOBIN=$HOME/go/bin
 
 EDITOR="emacs"
 PLATFORM="macos"
-WSL=false
 
 if [[ `uname` == Linux ]]; then
     PLATFORM="linux"
-    if [[ -d "/mnt/c/Windows" ]]; then
-        WSL=true
-    fi
 fi
 
 if [[ $PLATFORM == "macos" ]]; then
@@ -62,28 +58,7 @@ if [[ $PLATFORM == "macos" ]]; then
     BREW_BIN="/opt/homebrew/bin"   # Homebrew bin
     BREW_SBIN="/opt/homebrew/sbin" # Homebrew sbin
     BREW_OPTS="/opt/homebrew/opt"  # Homebrew opts (has curl / etc.)
-	export PATH=$BREW_BIN:$BREW_SBIN:$BREW_OPTS:$PATH:
-elif [[ $PLATFORM == "linux" ]]; then
-    # Build $PATH for linux.  Mac OS runs `path_helper` so this isn't
-    # necessary up there
-    #
-    # Below is the base path things in the order I like
-    #   - System bin     /bin
-    #   - System sbin    /sbin
-    #   - General bin    /usr/bin
-    #   - General sbin   /usr/sbin
-    #   - User bin      ~/bin
-    BASE_PATH=/bin:/sbin:/usr/bin:/usr/sbin:$HOME/bin
-    export PATH=$BASE_PATH
-
-    if [[ $WSL ]]; then
-        if [ ! -h $HOME"/.msbin/code" ]; then
-            ln -s -f "/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/code" $HOME"/.msbin/code"
-        fi
-        export PATH=$BASE_PATH:~/.msbin
-    fi
-
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+	export PATH=$BREW_BIN:$BREW_SBIN:$BREW_OPTS:$PATH
 fi
 
 #################
@@ -155,9 +130,6 @@ fi
 if [[ $PLATFORM == "macos" ]]; then
     alias finder="open"
     alias o.="open ."
-elif [[ $WSL ]]; then
-    alias explorer="/mnt/c/Windows/explorer.exe"
-    alias o.="/mnt/c/Windows/explorer.exe ."
 fi
 
 # Homebrew behaviour
