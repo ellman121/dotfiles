@@ -1,0 +1,202 @@
+{
+  // Application behaviour
+  "debug.toolBarLocation": "docked",
+  "explorer.compactFolders": false,
+  "explorer.confirmDelete": false,
+  "explorer.openEditors.visible": 1,
+  "explorer.confirmPasteNative": false,
+  "search.showLineNumbers": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "telemetry.telemetryLevel": "off",
+  "window.openFoldersInNewWindow": "off",
+  "workbench.commandPalette.history": 0,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.settings.editor": "json",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.tips.enabled": false,
+  "chat.mcp.discovery.enabled": {
+    "claude-desktop": false,
+    "windsurf": false,
+    "cursor-global": false,
+    "cursor-workspace": false
+  },
+  "files.exclude": {
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "node_modules": true,
+    "playwright": true
+  },
+
+  // Editor behaviour
+  "breadcrumbs.enabled": true,
+  "debug.inlineValues": "on",
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.formatOnPaste": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderWhitespace": "none",
+  "editor.smoothScrolling": true,
+  "editor.suggest.localityBonus": true,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 4,
+  "editor.rulers": [80],
+  "diffEditor.ignoreTrimWhitespace": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.insertFinalNewline": true,
+  "liveServer.settings.donotVerifyTags": true,
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.excludeLanguages": [
+    "pug",
+    "markdown",
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Copilot behaviour
+  "github.copilot.renameSuggestions.triggerAutomatically": false,
+  "editor.inlineSuggest.enabled": false,
+  "chat.mcp.access": "none",
+  "github.copilot.nextEditSuggestions.enabled": true,
+
+  // Theme adjustments
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#85b1e0"
+  },
+
+  // Debugging mode fixes
+  "debug.showInStatusBar": "always",
+
+  // Git behaviour
+  "git.autofetch": true,
+  "git.autorefresh": true,
+  "git.autofetchPeriod": 15,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.mergeEditor": false,
+  "git.openRepositoryInParentFolders": "always",
+
+  // Theme settings
+  "material-icon-theme.folders.theme": "specific",
+  "window.title": "${appName}${separator}${dirty}${rootName}",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Ariake Dark",
+  "workbench.editor.labelFormat": "medium",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.tree.indent": 16,
+
+  // Font fixes
+  "editor.fontFamily": "FiraCode-Retina",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+
+  // Customize Terminal
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.splitCwd": "workspaceRoot",
+  "terminal.integrated.fontSize": 14,
+
+  // Make search great again
+  "search.exclude": {
+    "**/android/app/build": true, // React Native Android build folder
+    "**/ios/build": true, // React Native iOS build folder
+    "**/bower_components": true, // Bower
+    "**/ios/Pods": true, // iOS Pods code
+    "**/lib": true, // Compiled javascript
+    "**/build": true, // Compiled javascript
+    "**/node_modules": true // NPM
+  },
+
+  /* Language specific fixes */
+  "files.associations": {
+    "Fastfile": "ruby",
+    "*.podspec": "ruby"
+  },
+
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook",
+    "*.strings": "default"
+  },
+
+  // C/C++
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4 }",
+  "C_Cpp.intelliSenseEngine": "default",
+  "[c]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  },
+  "[cpp]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true
+  },
+
+  // Goland
+  "go.toolsManagement.autoUpdate": true,
+
+  // Javascript / JSON
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "js/ts.updateImportsOnPaste.enabled": true,
+  "jest.runMode": "on-demand",
+
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.tabSize": 2,
+    // It annoys me when I paste a json file and it
+    // removes whitespace between lines
+    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+    // It annoys me when I paste a json file and it
+    // removes whitespace between lines
+    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+
+  // TS behavior
+  "js/ts.tsserver.experimental.enableProjectDiagnostics": true,
+  "[typescript]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // CSS behavior
+  "[scss]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Python behavior
+  "python.analysis.typeCheckingMode": "standard",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+
+  // LaTeX stuff
+  "latex-workshop.view.pdf.viewer": "tab",
+  "debug.javascript.autoAttachFilter": "disabled",
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.replaceTagsWhenPull": true,
+  "diffEditor.renderSideBySide": true,
+  "diffEditor.useInlineViewWhenSpaceIsLimited": false,
+  "claudeCode.preferredLocation": "panel"
+}

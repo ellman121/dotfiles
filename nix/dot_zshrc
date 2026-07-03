@@ -54,15 +54,16 @@ if [[ `uname` == Linux ]]; then
 fi
 
 if [[ $PLATFORM == "macos" ]]; then
-	# Set Homebrew Cask environment variables
+    # Homebrew behaviour
 	export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 	export HOMEBREW_NO_AUTO_UPDATE=1
+    export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
-    # Add brew binaries to the path
+    HOME_BIN="$HOME/bin" # Home bin
     BREW_BIN="/opt/homebrew/bin"   # Homebrew bin
     BREW_SBIN="/opt/homebrew/sbin" # Homebrew sbin
     BREW_OPTS="/opt/homebrew/opt"  # Homebrew opts (has curl / etc.)
-	export PATH=$BREW_BIN:$BREW_SBIN:$BREW_OPTS:$PATH:
+	export PATH=$BREW_BIN:$BREW_SBIN:$BREW_OPTS:$HOME_BIN:$PATH:
 elif [[ $PLATFORM == "linux" ]]; then
     # Build $PATH for linux.  Mac OS runs `path_helper` so this isn't
     # necessary up there
@@ -159,9 +160,6 @@ elif [[ $WSL ]]; then
     alias explorer="/mnt/c/Windows/explorer.exe"
     alias o.="/mnt/c/Windows/explorer.exe ."
 fi
-
-# Homebrew behaviour
-HOMEBREW_NO_ENV_HINTS=true
 
 #############################
 ### Init shell extensions ###
