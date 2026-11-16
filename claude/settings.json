@@ -1,0 +1,125 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(~/.claude/**)",
+      "Read(~/.claude/**)",
+      "WebFetch(domain:anthropic.com)",
+      "WebFetch(domain:*.anthropic.com)",
+      "WebFetch(domain:claude.ai)",
+      "WebFetch(domain:*.claude.ai)",
+      "WebFetch(domain:claude.com)",
+      "WebFetch(domain:*.claude.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:*.github.com)",
+      "WebFetch(domain:*.githubusercontent.com)",
+      "WebFetch(domain:npmjs.com)",
+      "WebFetch(domain:*.npmjs.com)",
+      "WebFetch(domain:registry.npmjs.org)",
+      "WebFetch(domain:*.npmjs.org)"
+    ],
+    "ask": [
+      "WebSearch",
+      "mcp__claude-in-chrome__*"
+    ],
+    "defaultMode": "plan",
+    "disableBypassPermissionsMode": "disable"
+  },
+  "model": "opus",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/git-guard.py",
+            "onFailure": "block"
+          }
+        ]
+      },
+      {
+        "matcher": "WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/webfetch-domain-guard.py",
+            "onFailure": "block"
+          }
+        ]
+      }
+    ]
+  },
+  "worktree": {
+    "baseRef": "fresh"
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "allowUnsandboxedCommands": false,
+    "network": {
+      "allowedDomains": [
+        "*.anthropic.com",
+        "*.claude.ai",
+        "*.claude.com",
+        "*.github.com",
+        "*.githubusercontent.com",
+        "*.npmjs.com",
+        "*.npmjs.org",
+        "anthropic.com",
+        "claude.ai",
+        "claude.com",
+        "github.com",
+        "npmjs.com",
+        "registry.npmjs.org"
+      ],
+      "strictAllowlist": true,
+      "allowLocalBinding": true
+    },
+    "filesystem": {
+      "denyRead": [
+        "~/",
+        "~/**/*.env",
+        "~/**/*.env.*",
+        "~/**/.env*",
+        "~/**/env"
+      ],
+      "allowRead": [
+        "~/.claude",
+        "~/.config/git",
+        "~/.gitconfig",
+        "~/.npm",
+        "~/.nvm",
+        "~/dev",
+        "~/klim"
+      ]
+    },
+    "excludedCommands": [
+      "docker compose *",
+      "docker-compose *"
+    ]
+  },
+  "feedbackDrafts": "off",
+  "modelSettings": {
+    "claude-sonnet-5-5": {
+      "effortLevel": "xhigh"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
+  "promptSuggestionEnabled": false,
+  "awaySummaryEnabled": false,
+  "askUserQuestionTimeout": "never",
+  "pluginConfigs": {
+    "cc-plugin-agents-md@builtin": {
+      "options": {
+        "instructionFiles": "claude-md-and-agents-md"
+      }
+    }
+  },
+  "timeFormat": "24-hour",
+  "theme": "dark-ansi",
+  "editorMode": "normal",
+  "autoContinueAtUsageLimit": false,
+  "remoteControlAtStartup": true
+}
